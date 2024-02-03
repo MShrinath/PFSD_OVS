@@ -1,0 +1,13 @@
+<!-- already_loggedin.html -->
+{% extends 'index.html' %}
+
+{% block b1 %}
+    <div class="info-box">
+        <h2>Already Logged In</h2>
+        <p>You are already logged in. If you want to register a new account, please log out first.</p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input type="submit" value="Log Out">
+        </form>
+    </div>
+{% endblock %}

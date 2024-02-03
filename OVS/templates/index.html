@@ -1,0 +1,33 @@
+<!-- index.html -->
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+</head>
+
+<body>
+    <div class="navbar-container">
+        <nav class="navbar">
+            <a href="{% url 'homePage' %}">Home</a>
+            <a href="{% url 'loginPage' %}">Login</a>
+            <a href="{% url 'registerPage' %}">Register</a>
+            <a href="{% url 'votingPage' %}">Vote</a>
+        </nav>
+    </div>
+    <hr>
+    <h1>Online Voting System</h1>
+
+    {% block b1 %}
+    <h3>This is home page</h3>
+    {% endblock %}
+
+</body>
+
+</html>
