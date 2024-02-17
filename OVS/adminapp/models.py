@@ -21,10 +21,10 @@ class Voter(AbstractUser):
     username = models.CharField(max_length=150, unique=True, blank=False)
     password = models.CharField(max_length=128, blank=False)
     vote = models.IntegerField (default=-1,blank=False)
-    is_admin = models.BooleanField(default=False)
-
+    is_voted = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.username
     
     class Meta:
-        db_table = "Voter"
+        db_table = "voter"
