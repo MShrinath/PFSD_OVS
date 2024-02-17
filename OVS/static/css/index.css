@@ -3,21 +3,39 @@
 body {
     background-color: yellowgreen;
     font-family: 'Salsa', sans-serif;
+    /* background-image: url("/static/images/BG_Image.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
 }
-h1 {
+
+.navbar-container h1 {
+    /* TITLE */
     color: white;
     text-align: center;
     font-size: 50px;
 }
 
+h2 {
+    color: antiquewhite;
+    text-align: center;
+}
 
 
 /* Register */
 
-form{
+form {
     text-align: center;
 }
 
+label {
+    color: white;
+    font-size: 20px;
+}
+
+a {
+    color: white;
+}
 
 .error-message {
     color: red;

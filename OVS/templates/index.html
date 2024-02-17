@@ -12,7 +12,7 @@
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
 </head>
 
-<body>
+<body class="content">
     <div class="navbar-container">
         <nav class="navbar">
             <a href="{% url 'homePage' %}">Home</a>
@@ -20,12 +20,14 @@
             <a href="{% url 'registerPage' %}">Register</a>
             <a href="{% url 'votingPage' %}">Vote</a>
         </nav>
-    </div>
     <hr>
     <h1>Online Voting System</h1>
+    </div>
 
-    {% block b1 %}
-    <h2>This is home page</h2>
+    {% block body %}
+    <div class="home-container">
+        <h2>This is home page</h2>
+    </div>
     {% endblock %}
 
 </body>

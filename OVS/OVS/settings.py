@@ -92,7 +92,13 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'adminapp.UserProfile'
 
+AUTHENTICATION_BACKENDS = [
+    'adminapp.backends.CustomUserProfileBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    # ... other backends if needed
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

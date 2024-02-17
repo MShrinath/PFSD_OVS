@@ -1,19 +1,35 @@
 <!-- login.html -->
 {% extends 'index.html' %}
 
-{% block b1 %}
+{% block body %}
 
-<h2>User Login</h2>
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
+<div class="login-container">
+    <h2>User Login</h2>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
+    {% if user.is_authenticated %}
+        <div class="error-message"><h3>You are already logged in. Please log out to access this page.</h3>
+        <form method="post" action="{% url 'logoutPage' %}">
+            {% csrf_token %}
+            <input type="submit" value="Log Out">
+        </form>
+    </div>
+    {% else %}
+        <div class="login">
+        {% if error_message %}
+            <div class="error-message">{{ error_message }}</div>
+        {% endif %}
 
-        <input type="submit" value="Login">
-    </form>
+        <form method="post" action="{% url 'loginCheck' %}">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" required><br>
 
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
 
+            <input type="submit" value="Login">
+        </form>
+        </div>
+    {% endif %}
+</div>
 {% endblock %}

@@ -1,7 +1,20 @@
 <!-- vote.html -->
 {% extends 'index.html' %}
 
-{% block b1 %}
-<div class="voting-container">
-<h2>This is voting page</h2>
+{% block body %}
+
+    <div class="voting-container">
+        <h2>This is voting page</h2>
+
+        {% if not user.is_authenticated %}
+        <div class="error-message"><h3>You are not logged in. Please log in to access this page.</h3>
+            <form method="post" action="{% url 'loginPage' %}">
+                {% csrf_token %}
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+        {% else %}
+        <h3>Vote for your favorite candidate</h3>
+        {% endif %}
+    </div>
 {% endblock %}

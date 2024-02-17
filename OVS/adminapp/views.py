@@ -1,19 +1,18 @@
-# views.py
+# adminapp/views.py
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout
+from django.contrib.auth import login , logout
 from django.db import IntegrityError  
 from .models import UserProfile
 
-def logout_view(request):
+def logout_the_page(request):
     logout(request)
     return redirect('homePage')
 
-def register_view(request):
+def register_check(request):
     if request.user.is_authenticated:
         return render(request, 'already_loggedin.html')
     if request.method == 'POST':
         try:
-            # Extract user input from the form
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             date_of_birth = request.POST['date_of_birth']
@@ -51,5 +50,18 @@ def register_view(request):
     return render(request, 'register.html')
 
 
-def login_view(request):
-    return render(request, 'login.html')
+def login_check(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        try:
+            user = UserProfile.objects.get(username=username,password=password)
+        except UserProfile.DoesNotExist:
+            user = None
+        
+        if user is not None:
+            login(request, user,backend='adminapp.backends.CustomUserProfileBackend')
+            return redirect('homePage')
+        else:
+            return redirect('loginPage')
