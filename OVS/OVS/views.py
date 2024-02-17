@@ -1,6 +1,5 @@
+# OVS/views.py
 from django.shortcuts import render
-from django.contrib import messages
-from django.urls import NoReverseMatch
 
 def HomePage(request):
     return render(request, 'index.html')

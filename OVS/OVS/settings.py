@@ -92,10 +92,10 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'adminapp.UserProfile'
+AUTH_USER_MODEL = 'adminapp.Voter'
 
 AUTHENTICATION_BACKENDS = [
-    'adminapp.backends.CustomUserProfileBackend',
+    'adminapp.backends.CustomVoterBackend',
     'django.contrib.auth.backends.ModelBackend',
     # ... other backends if needed
 ]

@@ -1,7 +1,8 @@
+# adminapp/models.py
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class UserProfile(AbstractUser):
+class Voter(AbstractUser):
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
@@ -26,4 +27,4 @@ class UserProfile(AbstractUser):
         return self.username
     
     class Meta:
-        db_table = "user_profile"
+        db_table = "Voter"

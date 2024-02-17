@@ -2,11 +2,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login , logout
 from django.db import IntegrityError  
-from .models import UserProfile
+from .models import Voter
 
-def logout_the_page(request):
-    logout(request)
-    return redirect('homePage')
 
 def register_check(request):
     error_message = None
@@ -25,7 +22,7 @@ def register_check(request):
             password = request.POST['password']
 
             # Create a new user profile
-            user_profile = UserProfile.objects.create(
+            user_profile = Voter.objects.create(
                 first_name=first_name,
                 last_name=last_name,
                 date_of_birth=date_of_birth,
@@ -47,6 +44,7 @@ def register_check(request):
 
     return render(request, 'register.html', {'error_message': error_message})
 
+
 def login_check(request):
     error_message = None
 
@@ -55,14 +53,19 @@ def login_check(request):
         password = request.POST['password']
 
         try:
-            user = UserProfile.objects.get(username=username, password=password)
-        except UserProfile.DoesNotExist:
+            user = Voter.objects.get(username=username, password=password)
+        except Voter.DoesNotExist:
             user = None
 
         if user is not None:
-            login(request, user, backend='adminapp.backends.CustomUserProfileBackend')
+            login(request, user, backend='adminapp.backends.CustomVoterBackend')
             return redirect('homePage')
         else:
             error_message = 'Wrong username or password.'
 
     return render(request, 'login.html', {'error_message': error_message})
+
+
+def logout_the_page(request):
+    logout(request)
+    return redirect('homePage')
