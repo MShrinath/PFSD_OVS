@@ -24,5 +24,5 @@ urlpatterns = [
     path('login', views.LoginPage,name='loginPage'),
     path('register', views.RegisterPage,name='registerPage'),
     path('vote',views.VotingPage,name='votingPage'),
-    path('adm/', include('adminapp.urls')),
+    path('', include('adminapp.urls')),
 ]

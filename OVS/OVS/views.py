@@ -5,8 +5,8 @@ from django.urls import NoReverseMatch
 def HomePage(request):
     return render(request, 'index.html')
 
-def LoginPage(request, error_message=None):
-    return render(request, 'login.html', {'error_message': error_message})
+def LoginPage(request):
+    return render(request, 'login.html')
 
 def RegisterPage(request):
     return render(request, 'register.html')

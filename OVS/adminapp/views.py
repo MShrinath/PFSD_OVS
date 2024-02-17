@@ -3,17 +3,17 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login , logout
 from django.db import IntegrityError  
 from .models import UserProfile
-from django.contrib import messages
 
 def logout_the_page(request):
     logout(request)
     return redirect('homePage')
 
 def register_check(request):
-    if request.user.is_authenticated:
-        return render(request, 'already_loggedin.html')
+    error_message = None
+
     if request.method == 'POST':
         try:
+            # Extract form data
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             date_of_birth = request.POST['date_of_birth']
@@ -36,33 +36,33 @@ def register_check(request):
                 username=username,
                 password=password,
             )
-
             
-            return redirect('homePage')  
+            return redirect('homePage')
 
-        except IntegrityError as e:
+        except IntegrityError:
             error_message = "Registration failed. The provided email or username is already registered."
-            return render(request, 'register.html', {'error_message': error_message})
 
-        except Exception as e:
+        except Exception:
             error_message = "An error occurred during registration. Please try again later."
-            return render(request, 'register.html', {'error_message': error_message})
 
-    return render(request, 'register.html')
-
+    return render(request, 'register.html', {'error_message': error_message})
 
 def login_check(request):
+    error_message = None
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
 
         try:
-            user = UserProfile.objects.get(username=username,password=password)
+            user = UserProfile.objects.get(username=username, password=password)
         except UserProfile.DoesNotExist:
             user = None
-        
+
         if user is not None:
-            login(request, user,backend='adminapp.backends.CustomUserProfileBackend')
+            login(request, user, backend='adminapp.backends.CustomUserProfileBackend')
             return redirect('homePage')
         else:
-            return redirect('loginPage',error_message = "Wrong username or password.")
+            error_message = 'Wrong username or password.'
+
+    return render(request, 'login.html', {'error_message': error_message})
