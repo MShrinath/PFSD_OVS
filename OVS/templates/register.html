@@ -16,7 +16,7 @@
 	{% else %}
 		<div class="register">
 		{% if error_message %}
-		<div class="error-message">{{ error_message }}</div>
+		<script>alert("{{ error_message }}");</script>
 		{% endif %}
 		<form method="post" action="{% url 'registerCheck' %}">
 			{% csrf_token %}

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login , logout
 from django.db import IntegrityError  
 from .models import UserProfile
+from django.contrib import messages
 
 def logout_the_page(request):
     logout(request)
@@ -64,4 +65,4 @@ def login_check(request):
             login(request, user,backend='adminapp.backends.CustomUserProfileBackend')
             return redirect('homePage')
         else:
-            return redirect('loginPage')
+            return redirect('loginPage',error_message = "Wrong username or password.")

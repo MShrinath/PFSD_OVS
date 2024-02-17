@@ -17,8 +17,8 @@ class UserProfile(AbstractUser):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
     
     email = models.EmailField(unique=True)
-    username = models.CharField(max_length=30, unique=True, blank=False)
-    password = models.CharField(max_length=12, blank=False)
+    username = models.CharField(max_length=150, unique=True, blank=False)
+    password = models.CharField(max_length=128, blank=False)
     vote = models.IntegerField (default=-1,blank=False)
     is_admin = models.BooleanField(default=False)
 

@@ -26,10 +26,3 @@ urlpatterns = [
     path('vote',views.VotingPage,name='votingPage'),
     path('adm/', include('adminapp.urls')),
 ]
-
-
-
-# urlpatterns = [
-#     path('accregister/', views.register_view, name='register'),
-#     path('acclogin/', views.login_view, name='login'),
-# ]

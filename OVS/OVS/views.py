@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from django.contrib import messages
+from django.urls import NoReverseMatch
 
 def HomePage(request):
     return render(request, 'index.html')
 
-def LoginPage(request):
-    error_message = request.GET.get('error_message', None)
+def LoginPage(request, error_message=None):
     return render(request, 'login.html', {'error_message': error_message})
 
 def RegisterPage(request):
