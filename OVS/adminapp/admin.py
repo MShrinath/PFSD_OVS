@@ -5,7 +5,7 @@ from .models import Voter
 class VoterAdmin(UserAdmin):
     list_display = ('id', 'username', 'vote' ,'is_staff', 'is_voted')
     search_fields = ('username', 'email', 'first_name', 'last_name')
-    list_filter = ('is_staff', 'is_voted', 'gender')
+    list_filter = ('vote', 'gender')
 
 
 admin.site.register(Voter,VoterAdmin)
