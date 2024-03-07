@@ -9,11 +9,17 @@ body {
     background-size: cover; */
 }
 
+
 .navbar-container h1 {
     /* TITLE */
     color: white;
     text-align: center;
     font-size: 50px;
+}
+
+.navbar,a{
+    color: white;
+    font-size: 20px;
 }
 
 h2 {
@@ -23,7 +29,7 @@ h2 {
 
 
 /* Register */
-
+/* 
 form {
     text-align: center;
 }
@@ -40,4 +46,4 @@ a {
 .error-message {
     color: red;
     margin-bottom: 10px;
-}
+} */

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n+^n)+xw^rj+c!+mnz!h_gtggky+e=41)4_c4ntpdm+pqn@-ph
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_matplotlib',
     'adminapp'
 ]
 

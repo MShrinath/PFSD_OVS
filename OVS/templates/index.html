@@ -19,10 +19,14 @@
             <a href="{% url 'loginPage' %}">Login</a>
             <a href="{% url 'registerPage' %}">Register</a>
             <a href="{% url 'votingPage' %}">Vote</a>
+            {% if user.is_authenticated %}
+                <span style="float: right;">Welcome {{ user.username }}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            {% endif %}
         </nav>
-    <hr>
-    <h1>Online Voting System</h1>
+        <hr>
+        <h1>Online Voting System</h1>
     </div>
+
 
     {% block body %}
     <div class="home-container">
