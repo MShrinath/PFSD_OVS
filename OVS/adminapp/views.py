@@ -4,6 +4,7 @@ from django.contrib.auth import login , logout
 from django.db import IntegrityError  
 from .models import Voter
 
+from django.http import JsonResponse
 
 def register_check(request):
     error_message = None
@@ -59,7 +60,7 @@ def login_check(request):
 
         if user is not None:
             login(request, user, backend='adminapp.backends.CustomVoterBackend')
-            return redirect('homePage')
+            return redirect('votingPage')
         else:
             error_message = 'Wrong username or password.'
 
@@ -69,3 +70,20 @@ def login_check(request):
 def logout_the_page(request):
     logout(request)
     return redirect('homePage')
+
+def admin_stats_data(request):
+    lbl = ['Not Voted','Candi1','Candi2'] 
+    votes_query_set = Voter.objects.values_list('vote', flat=True)
+    votes_list = list(votes_query_set)
+    vote_0 = votes_list.count(0)
+    vote_1 = votes_list.count(1)
+    vote_2 = votes_list.count(2)
+    dts = [{'label': 'Voting','data': [vote_0,vote_1,vote_2],'backgroundColor': ['#FF6384','#36A2EB','#FFCE56']}]
+    data = {'labels':lbl,'datasets':dts}
+    return JsonResponse({
+        'type': 'doughnut',
+        'data': data,
+        })
+
+def admin_stats(request):
+    return render(request, 'admin_stats.html',{})

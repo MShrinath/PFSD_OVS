@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block body %}
+{% load static %}
+    <div class="graph-container" style="align-items: center; width: 34%; margin: auto;">
+        <canvas id="voteDoughnutChart"></canvas>
+    </div>
+    <script src="{% static 'js/admin_stats.js' %}"></script>
+{% endblock %}

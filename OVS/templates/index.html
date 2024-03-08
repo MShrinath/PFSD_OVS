@@ -18,9 +18,15 @@
             <a href="{% url 'homePage' %}">Home</a>
             <a href="{% url 'loginPage' %}">Login</a>
             <a href="{% url 'registerPage' %}">Register</a>
-            <a href="{% url 'votingPage' %}">Vote</a>
             {% if user.is_authenticated %}
-                <span style="float: right;">Welcome {{ user.username }}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <a href="{% url 'votingPage' %}">Vote</a>
+            {% endif %}
+            
+            {% if user.is_authenticated %}
+                <span style="float: right;">&nbsp;&nbsp;Welcome {{ user.username }}&nbsp;&nbsp;</span>
+            {% endif %}
+            {% if user.is_staff %}
+                <a style="float: right;" href="{% url 'astats' %}">Stats</a>
             {% endif %}
         </nav>
         <hr>

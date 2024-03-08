@@ -15,11 +15,11 @@ class Voter(AbstractUser):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
 
     VOTE_CHOICES = [
-        (-1, 'Not Voted'),
-        (0, 'Candidate 1'),
-        (1, 'Candidate 2'),
+        (0, 'Not Voted'),
+        (1, 'Candidate 1'),
+        (2, 'Candidate 2'),
     ]
-    vote = models.IntegerField(default=-1, choices=VOTE_CHOICES)
+    vote = models.IntegerField(default=0, choices=VOTE_CHOICES)
     is_voted = models.BooleanField(default=False)
     
     def __str__(self):
