@@ -13,6 +13,8 @@
                 <input type="submit" value="Log In">
             </form>
         </div>
+        {% elif user.is_voted %}
+        <h3>You have already voted, Thank you!!</h3>
         {% else %}
         <h3>Vote for your favorite candidate</h3>
         {% endif %}
