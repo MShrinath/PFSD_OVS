@@ -18,6 +18,7 @@ class Voter(AbstractUser):
         (0, 'Not Voted'),
         (1, 'Candidate 1'),
         (2, 'Candidate 2'),
+        (3, 'Candidate 3'),
     ]
     vote = models.IntegerField(default=0, choices=VOTE_CHOICES)
     is_voted = models.BooleanField(default=False)

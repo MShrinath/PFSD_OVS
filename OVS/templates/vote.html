@@ -17,6 +17,17 @@
         <h3>You have already voted, Thank you!!</h3>
         {% else %}
         <h3>Vote for your favorite candidate</h3>
+        <form method="post" action="{% url 'voteCheck' %}">
+            {% csrf_token %}
+            <div class="voting-options">
+                {% for candidate in candidates %}
+                <div class="voting-option">
+                    <input type="radio" id="{{ candidate.id }}" name="vote" value="{{ candidate.id }}">
+                    <label for="{{ candidate.id }}">{{ candidate.name }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <input type="submit" value="Vote">
         {% endif %}
     </div>
 {% endblock %}

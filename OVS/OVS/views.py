@@ -14,4 +14,9 @@ def AdminPage(request):
     return render(request, 'admin.html')
 
 def VotingPage(request):
-    return render(request, 'vote.html') 
+    candis = [
+        {'name': 'Candidate 1', 'id': 1},
+        {'name': 'Candidate 2', 'id': 2},
+        {'name': 'Candidate 3', 'id': 3},
+    ]
+    return render(request, 'vote.html', {'candidates': candis}) 
