@@ -3,8 +3,23 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login , logout
 from django.db import IntegrityError  
 from .models import Voter
+from django.core.exceptions import ValidationError
 
 from django.http import JsonResponse
+
+def validate_password_complexity(password):
+    # Add complexity checks here
+    if not any(char.isupper() for char in password):
+        raise ValidationError('Password must contain at least one uppercase letter.')
+
+    if not any(char.islower() for char in password):
+        raise ValidationError('Password must contain at least one lowercase letter.')
+
+    if not any(char.isdigit() for char in password):
+        raise ValidationError('Password must contain at least one digit.')
+
+    if not any(char in "!@#$%^&*()-_=+[]{}|;:'\",.<>/?`~" for char in password):
+        raise ValidationError('Password must contain at least one special character.')
 
 def register_check(request):
     error_message = None
@@ -21,6 +36,9 @@ def register_check(request):
             email = request.POST['email']
             username = request.POST['username']
             password = request.POST['password']
+
+            # Validate password complexity
+            validate_password_complexity(password)
 
             # Create a new user profile
             user_profile = Voter.objects.create(
@@ -40,11 +58,13 @@ def register_check(request):
         except IntegrityError:
             error_message = "Registration failed. The provided email or username is already registered."
 
+        except ValidationError as e:
+            error_message = str(e)
+
         except Exception:
             error_message = "An error occurred during registration. Please try again later."
 
     return render(request, 'register.html', {'error_message': error_message})
-
 
 def login_check(request):
     error_message = None

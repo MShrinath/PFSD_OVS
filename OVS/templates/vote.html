@@ -2,9 +2,9 @@
 {% extends 'index.html' %}
 
 {% block body %}
-
+<h1 style="text-align: center;">Voting</h1>
     <div class="voting-container">
-        <h2>This is voting page</h2>
+        
 
         {% if not user.is_authenticated %}
         <div class="error-message"><h3>You are not logged in. Please log in to access this page.</h3>
@@ -14,7 +14,7 @@
             </form>
         </div>
         {% elif user.is_voted %}
-        <h3>You have already voted, Thank you!!</h3>
+        <div class="error-message"><h3>You have already voted, Thank you!!</h3></div>
         {% else %}
         <h3>Vote for your favorite candidate</h3>
         <form method="post" action="{% url 'voteCheck' %}">

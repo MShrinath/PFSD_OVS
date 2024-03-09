@@ -30,13 +30,21 @@
             {% endif %}
         </nav>
         <hr>
-        <h1>Online Voting System</h1>
     </div>
 
 
     {% block body %}
+    <h1 style="text-align: center;">Online Voting System</h1>
     <div class="home-container">
-        <h2>This is home page</h2>
+        
+
+        <!-- <div class="container"> -->
+                <img src="{% static 'images/logg.png' %}" alt="Online Voting System" class="logo" width="150">
+                <h1>Welcome to the Online Voting System</h1>
+                <p>Cast your vote securely and conveniently from anywhere!</p>
+                <a href="{% url 'registerPage' %}"><button>Get Started</button></a>
+        <!-- </div> -->
+
     </div>
     {% endblock %}
 

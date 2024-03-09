@@ -10,6 +10,46 @@ body {
 }
 
 
+/* HOMEPAGE */
+
+        .home-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+
 .navbar-container h1 {
     /* TITLE */
     color: white;
@@ -22,28 +62,185 @@ body {
     font-size: 20px;
 }
 
+
 h2 {
     color: antiquewhite;
     text-align: center;
 }
 
-
-/* Register */
-/* 
-form {
-    text-align: center;
+/* REGISTER */
+.register {
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
-label {
+.register form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register label {
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.register input, .register select {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 1px solid #3CB371;
+    border-radius: 4px;
+    outline: none;
+}
+
+.register select {
+    margin-bottom: 8px;
+}
+
+.register input[type="submit"] {
+    background-color: #3CB371;
     color: white;
-    font-size: 20px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-a {
+.register input[type="submit"]:hover {
+    background-color: #2E8B57;
+}
+
+.register h2 {
+    margin-top: 0;
+    color: #3CB371;
+}
+
+.register .error {
+    color: indianred;
+}
+
+
+/* LOGIN */
+
+.login {
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login label {
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.login input {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 1px solid #3CB371;
+    border-radius: 4px;
+    outline: none;
+}
+
+.login input[type="submit"] {
+    background-color: #3CB371;
     color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
+.login input[type="submit"]:hover {
+    background-color: #2E8B57;
+}
+
+.login .error {
+    color: indianred;
+}
+
+
+/* ERROR */
 .error-message {
-    color: red;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.error-message h3 {
+    color: #FF6347; /* Tomato red */
+}
+
+
+/* VOTE */
+.voting-container {
+    font-family: Arial, sans-serif;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.voting-container h3 {
+    color: #333;
+}
+
+.voting-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.voting-option {
     margin-bottom: 10px;
-} */
+}
+
+.voting-option input {
+    margin-right: 5px;
+}
+
+.voting-option label {
+    color: #333;
+}
+
+.voting-container input[type="submit"] {
+    background-color: #3CB371;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.voting-container input[type="submit"]:hover {
+    background-color: #2E8B57;
+}
