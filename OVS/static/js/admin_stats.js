@@ -12,6 +12,7 @@ function loadChartJsLibrary() {
 }
 
 let apiurl = 'http://127.0.0.1:8000/stats/';
+// let apiurl = 'https://shrin13.pythonanywhere.com/stats/';
 
 async function initializeChart() {
     // Load Chart.js library dynamically
