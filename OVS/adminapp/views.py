@@ -4,7 +4,7 @@ from django.contrib.auth import login , logout
 from django.db import IntegrityError  
 from .models import Voter
 from django.core.exceptions import ValidationError
-
+from datetime import datetime
 from django.http import JsonResponse
 
 def validate_password_complexity(password):
@@ -20,6 +20,20 @@ def validate_password_complexity(password):
 
     if not any(char in "!@#$%^&*()-_=+[]{}|;:'\",.<>/?`~" for char in password):
         raise ValidationError('Password must contain at least one special character.')
+
+def verify_dob(date_of_birth):
+    # Add verification logic for date of birth (DOB)
+    dob = datetime.strptime(date_of_birth, '%Y-%m-%d').date()
+
+    current_date = datetime.now().date()
+
+    if dob > current_date:
+        raise ValidationError('Invalid date of birth. Date cannot be in the future.')
+
+    age = current_date.year - dob.year - ((current_date.month, current_date.day) < (dob.month, dob.day))
+
+    if age < 18:
+        raise ValidationError('You must be 18 years or older to register.')
 
 def register_check(request):
     error_message = None
@@ -40,6 +54,9 @@ def register_check(request):
             # Validate password complexity
             validate_password_complexity(password)
 
+            # Verify date of birth
+            verify_dob(date_of_birth)
+            
             # Create a new user profile
             user_profile = Voter.objects.create(
                 first_name=first_name,
@@ -103,7 +120,7 @@ def vote_check(request):
         return redirect('homePage')
 
 def admin_stats_data(request):
-    lbl = ['Not Voted','Candi1','Candi2','Candi3'] 
+    lbl = ['Not Voted','Candidate 1','Candidate 2','Candidate 3'] 
     votes_query_set = Voter.objects.values_list('vote', flat=True)
     votes_list = list(votes_query_set)
     vote_0 = votes_list.count(0)
@@ -118,4 +135,4 @@ def admin_stats_data(request):
         })
 
 def admin_stats(request):
-    return render(request, 'admin_stats.html',{})
+    return render(request, 'admin_stats.html')
